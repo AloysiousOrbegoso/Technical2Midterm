@@ -14,15 +14,15 @@ def showTasks( ):
       print(i+1,".",tasks[i])
 
 def removetask(tasknumber):
-    tasks.pop(tasknumber) 
+    tasks.pop(tasknumber-1) 
     print("task removed!!")
 
 def main():
     while True:
-        print("1 Add Task")
+        print("1.Add Task")
         print("2.Show Tasks")
         print("3.Remove Task")
-        print("4- Exit")
+        print("4.Exit")
         ch = input("enter choice : ")
         if ch=="1":
             t = input("enter task : ")
@@ -33,7 +33,7 @@ def main():
             n=int(input("enter task no to remove: "))
             removetask(n)   
         elif ch=="4":
-            break;
+            break
         else:
             print("wrong choice!!")
 main()
