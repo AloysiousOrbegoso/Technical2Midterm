@@ -1,4 +1,10 @@
 # toDoApp.py
+import os
+
+def clear_screen():
+    # For Windows
+    if os.name == 'nt':
+        _ = os.system('cls')
 
 tasks=[]
 
@@ -27,11 +33,15 @@ def main():
 
         ch = input("Enter Number Choice(1-4): ")
         if ch=="1":
+            clear_screen()
             t = input("Enter Task Name: ")
             addtask(t)
         elif ch=="2":
+            clear_screen()
             showTasks()
         elif ch=="3":
+            clear_screen()
+            showTasks()
             n=int(input("Enter Task Number to Remove: "))
             removetask(n)   
         elif ch=="4":
