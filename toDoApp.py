@@ -25,11 +25,12 @@ def removetask(tasknumber):
 
 def main():
     while True:
-        #TO DO Make Beautiful GUI
-        print("1.Add Task")
-        print("2.Show Tasks")
-        print("3.Remove Task")
-        print("4.Exit")
+        print("="*20)      
+        print("[1] - Add Task")
+        print("[2] - Show Tasks")
+        print("[3] - Remove Task")
+        print("[4] - Exit")
+        print("="*20) 
 
         ch = input("Enter Number Choice(1-4): ")
         if ch=="1":
