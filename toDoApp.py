@@ -1,16 +1,23 @@
 # toDoApp.py
 import os
 
-def clear_screen():
+def clearScreen():
     # For Windows
     if os.name == 'nt':
         _ = os.system('cls')
 
 tasks=[]
+file_path = "addtask.txt"
+if os.path.exists(file_path):
+    with open("addtask.txt", 'r') as file:
+            str = file.readlines()
+            for s in str:
+                tasks.append(s.strip())
 
-def addtask(task) :
-  tasks.append(task)
-  print("Task Added!")
+def addTask(task) :
+    tasks.append(task)
+    print("Task Added!")
+    writeFile()
 
 def showTasks( ):
     if len(tasks)==0 :
@@ -19,9 +26,15 @@ def showTasks( ):
      for i in range (len(tasks)):
       print(i+1,".",tasks[i])
 
-def removetask(tasknumber):
+def removeTask(tasknumber):
     tasks.pop(tasknumber-1) 
     print("Task Removed!")
+    writeFile()
+
+def writeFile():
+    with open("addtask.txt", "w") as f:    
+        for str in tasks:
+            f.write(str + "\n")
 
 def main():
     while True:
@@ -34,17 +47,25 @@ def main():
 
         ch = input("Enter Number Choice(1-4): ")
         if ch=="1":
-            clear_screen()
+            clearScreen()
             t = input("Enter Task Name: ")
-            addtask(t)
+            addTask(t)
         elif ch=="2":
-            clear_screen()
+            clearScreen()
             showTasks()
         elif ch=="3":
-            clear_screen()
+            clearScreen()
+            print("0 . Cancel")
             showTasks()
-            n=int(input("Enter Task Number to Remove: "))
-            removetask(n)   
+            while True:
+                n=int(input("Enter Task Number to Remove: "))
+                if (0<n and n<=(len(tasks))):
+                    removeTask(n)
+                    break
+                elif (n==0):
+                    break
+                else:
+                    print("Choice was Invalid Please Try Again")
         elif ch=="4":
             break
         else:
